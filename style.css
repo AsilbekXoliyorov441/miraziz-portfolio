@@ -1,0 +1,745 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0b0b12;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* NAVBAR */
+
+header {
+    border-bottom: 1px solid #252532;
+}
+
+nav {
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #a855f7;
+}
+
+.links {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.links a {
+    color: #b8b8c7;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.links a:hover {
+    color: #a855f7;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.hero-text {
+    max-width: 600px;
+}
+
+.subtitle {
+    color: #a855f7;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: clamp(40px, 6vw, 65px);
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+h1 span {
+    color: #a855f7;
+}
+
+.hero h2 {
+    font-size: 25px;
+    color: #c4b5fd;
+    margin-bottom: 20px;
+}
+
+.description {
+    color: #aaaabb;
+    max-width: 500px;
+    margin-bottom: 28px;
+}
+
+.buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 22px;
+    background: #a855f7;
+    border: 1px solid #a855f7;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #9333ea;
+    transform: translateY(-3px);
+}
+
+.btn-outline {
+    background: transparent;
+    border-color: #444455;
+}
+
+.btn-outline:hover {
+    background: #191925;
+}
+
+/* HERO CARD */
+
+.hero-card {
+    width: 320px;
+    min-height: 250px;
+    flex-shrink: 0;
+    border: 1px solid #29243a;
+    border-radius: 20px;
+    background: #13131f;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+}
+
+.code-icon {
+    font-size: 70px;
+    font-weight: bold;
+    color: #a855f7;
+    margin-bottom: 15px;
+}
+
+.hero-card h3 {
+    margin-bottom: 8px;
+}
+
+.hero-card p {
+    color: #aaaabb;
+    font-size: 13px;
+}
+
+/* SECTIONS */
+
+.section {
+    padding-top: 75px;
+    padding-bottom: 30px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-title h2,
+.contact-box h2 {
+    font-size: clamp(28px, 4vw, 38px);
+}
+
+/* ABOUT */
+
+.about-card {
+    background: #13131f;
+    border: 1px solid #29243a;
+    border-radius: 15px;
+    padding: 30px;
+    color: #b8b8c7;
+    text-align: center;
+}
+
+/* CARDS */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Uiverse uslubidagi karta: aylanuvchi gradient border + sichqonchaga ergashuvchi nur */
+
+.card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border-radius: 15px;
+    padding: 25px;
+    background: #29243a;
+    transition: transform 0.4s cubic-bezier(.2, .8, .2, 1), box-shadow 0.4s;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    left: 50%;
+    top: 50%;
+    width: 200%;
+    aspect-ratio: 1;
+    background: conic-gradient(from 0deg, transparent 0 70%, #a855f7 85%, #ec4899 92%, transparent 100%);
+    transform: translate(-50%, -50%) rotate(0deg);
+    animation: border-spin 6s linear infinite;
+    opacity: 0.35;
+    transition: opacity 0.4s;
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 1.5px;
+    border-radius: 14px;
+    background:
+        radial-gradient(300px circle at var(--x, 50%) var(--y, -100%), rgba(168, 85, 247, 0.18), transparent 60%),
+        #13131f;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px -15px rgba(168, 85, 247, 0.45);
+}
+
+.card:hover::before {
+    opacity: 1;
+    animation-duration: 3s;
+}
+
+.card-icon,
+.family-icon,
+.project-number {
+    transition: transform 0.4s cubic-bezier(.2, .8, .2, 1);
+}
+
+.card:hover .card-icon,
+.card:hover .family-icon {
+    transform: translateY(-4px) rotate(-8deg) scale(1.08);
+}
+
+.card:hover .project-number {
+    transform: translateX(6px);
+}
+
+@keyframes border-spin {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.card-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #2a1740;
+    color: #c084fc;
+    border-radius: 10px;
+    font-size: 23px;
+    margin-bottom: 18px;
+}
+
+.card h3 {
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #aaaabb;
+    font-size: 14px;
+}
+
+/* PROJECTS */
+
+.project-number {
+    display: block;
+    color: #a855f7;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.tag {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 5px 10px;
+    background: #2a1740;
+    color: #d8b4fe;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+/* CONTACT */
+
+.contact-box {
+    background: #13131f;
+    border: 1px solid #39244d;
+    border-radius: 20px;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.contact-box > p:not(.subtitle) {
+    color: #aaaabb;
+    margin: 15px 0 25px;
+}
+
+/* FOOTER */
+
+footer {
+    margin-top: 75px;
+    border-top: 1px solid #252532;
+    padding: 25px 0;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.footer-content p {
+    color: #aaaabb;
+    font-size: 13px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 800px) {
+    nav {
+        padding: 20px 0;
+        flex-direction: column;
+    }
+
+    .links {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hero-card {
+        width: 100%;
+        max-width: 400px;
+        align-self: center;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 550px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding-top: 50px;
+    }
+
+    .section {
+        padding-top: 55px;
+    }
+
+    .about-card {
+        padding: 22px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* MENING OILAM */
+
+.family-card {
+    text-align: center;
+}
+
+.family-icon {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #2a1740;
+    border-radius: 50%;
+    font-size: 30px;
+}
+
+/* FOOTER CONTACT */
+
+footer {
+    margin-top: 75px;
+    border-top: 1px solid #252532;
+    padding: 60px 0 25px;
+}
+
+.footer-contact {
+    max-width: 600px;
+    margin: 0 auto 60px;
+    text-align: center;
+}
+
+.footer-contact h2 {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.footer-description {
+    color: #aaaabb;
+    margin-bottom: 25px;
+}
+
+.footer-contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer-contact input,
+.footer-contact textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #333344;
+    border-radius: 10px;
+    background: #13131f;
+    color: white;
+    font: inherit;
+    outline: none;
+}
+
+.footer-contact input:focus,
+.footer-contact textarea:focus {
+    border-color: #a855f7;
+}
+
+.footer-contact textarea {
+    resize: vertical;
+}
+
+.footer-contact input::placeholder,
+.footer-contact textarea::placeholder {
+    color: #88889b;
+}
+
+.footer-contact button {
+    font: inherit;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding-top: 25px;
+    border-top: 1px solid #252532;
+}
+
+.footer-content p,
+.back-top {
+    color: #aaaabb;
+    font-size: 13px;
+}
+
+.back-top:hover {
+    color: #a855f7;
+}
+
+@media (max-width: 550px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-contact h2 {
+        font-size: 27px;
+    }
+}
+
+.hero-card img{
+    width: 100%;
+border-radius: 30px;
+}
+/* ANIMATSIYALAR */
+
+/* Hero: sahifa ochilganda paydo bo'lish */
+.hero-text > * {
+    opacity: 0;
+    animation: fade-up 0.8s cubic-bezier(.2, .8, .2, 1) forwards;
+}
+
+.hero-text > :nth-child(1) { animation-delay: 0.1s; }
+.hero-text > :nth-child(2) { animation-delay: 0.2s; }
+.hero-text > :nth-child(3) { animation-delay: 0.3s; }
+.hero-text > :nth-child(4) { animation-delay: 0.4s; }
+.hero-text > :nth-child(5) { animation-delay: 0.5s; }
+
+h1 span {
+    background: linear-gradient(90deg, #a855f7, #ec4899, #a855f7);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: text-shine 4s linear infinite;
+}
+
+/* Hero karta: suzish + aylanuvchi border */
+.hero-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border: none;
+    background: #29243a;
+    opacity: 0;
+    animation: fade-up 0.9s 0.3s cubic-bezier(.2, .8, .2, 1) forwards, float 5s 1.2s ease-in-out infinite;
+}
+
+.hero-card::before {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    left: 50%;
+    top: 50%;
+    width: 200%;
+    aspect-ratio: 1;
+    background: conic-gradient(from 0deg, transparent 0 60%, #a855f7 80%, #ec4899 90%, transparent 100%);
+    animation: border-spin 4s linear infinite;
+}
+
+.hero-card::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 2px;
+    border-radius: 18px;
+    background: #13131f;
+}
+
+/* Tugmalar: Uiverse uslubidagi shine */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    transform: skewX(-20deg);
+}
+
+.btn:hover::after {
+    animation: btn-shine 0.7s ease;
+}
+
+.btn:hover {
+    box-shadow: 0 10px 25px -8px rgba(168, 85, 247, 0.7);
+}
+
+/* Scroll qilganda paydo bo'lish (script.js .show qo'shadi) */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(.2, .8, .2, 1), transform 0.8s cubic-bezier(.2, .8, .2, 1);
+    transition-delay: var(--delay, 0s);
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: none;
+}
+
+/* .card o'zining transform transition'iga ega, shuning uchun ikkalasini birlashtiramiz */
+.card.reveal.show {
+    transition: opacity 0.8s var(--delay, 0s), transform 0.4s cubic-bezier(.2, .8, .2, 1), box-shadow 0.4s;
+}
+
+.links a {
+    position: relative;
+}
+
+.links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    background: #a855f7;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s;
+}
+
+.links a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+@keyframes text-shine {
+    to { background-position: 200% center; }
+}
+
+@keyframes btn-shine {
+    to { left: 125%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .hero-text > *,
+    .hero-card,
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* LOYIHALAR KARUSELI (Owl Carousel) */
+
+/* Hover'da ko'tarilgan karta va soya kesilib qolmasligi uchun */
+.projects-carousel .owl-stage-outer {
+    padding: 15px 0 30px;
+}
+
+/* Barcha kartalar bir xil balandlikda */
+.projects-carousel .owl-stage {
+    display: flex;
+}
+
+.projects-carousel .owl-item {
+    display: flex;
+}
+
+.projects-carousel .card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.projects-carousel .tag {
+    margin-top: auto;
+}
+
+.projects-carousel p {
+    margin-bottom: 18px;
+}
+
+.project-link {
+    margin-top: 14px;
+    color: #c084fc;
+    font-size: 13px;
+    font-weight: bold;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.card:hover .project-link {
+    color: #ec4899;
+    transform: translateX(4px);
+}
+
+.projects-carousel.owl-theme .owl-dots {
+    margin-top: 0;
+}
+
+.projects-carousel.owl-theme .owl-dots .owl-dot span {
+    width: 10px;
+    height: 10px;
+    margin: 5px;
+    background: #29243a;
+    transition: width 0.3s, background 0.3s;
+}
+
+.projects-carousel.owl-theme .owl-dots .owl-dot.active span,
+.projects-carousel.owl-theme .owl-dots .owl-dot:hover span {
+    width: 28px;
+    background: #a855f7;
+}
